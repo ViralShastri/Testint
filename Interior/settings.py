@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -80,18 +81,18 @@ WSGI_APPLICATION = 'Interior.wsgi.application'
 
 
 DATABASES = {
-        'default': {
+    'default': {
         'ENGINE': 'djongo',
         # 'NAME': 'interior',
         # 'HOST': 'mongodb+srv://Smit:smit1212@interiorcluster.nnkww.mongodb.net/interior?retryWrites=true&w=majority',
         # 'USER': 'Smit',
         # 'PASSWORD': 'smit1212',
         "CLIENT": {
-           "name": 'interior',
-           "host": 'mongodb+srv://Smit:smit1212@interiorcluster.nnkww.mongodb.net/interior?retryWrites=true&w=majority',
-           "username": 'Smit',
-           "password": 'smit1212',
-           "authMechanism": "SCRAM-SHA-1",
+            "name": 'interior',
+            "host": 'mongodb+srv://Smit:smit1212@interiorcluster.nnkww.mongodb.net/interior?retryWrites=true&w=majority',
+            "username": 'Smit',
+            "password": 'smit1212',
+            "authMechanism": "SCRAM-SHA-1",
         },
     }
 }
@@ -126,6 +127,7 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3001",
 ]
@@ -148,4 +150,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
